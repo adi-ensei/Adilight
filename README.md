@@ -1,81 +1,131 @@
-🌟 Adilight
-Tagline: Don’t miss anything — a clean, media-sharing app for discovering and saving highlights.
+# 🌟 Adilight
 
-🚀 Overview
-Adilight is an Expo-based mobile app that lets users browse, post, comment, and bookmark images. Key differentiators:
+**_Don’t miss anything_** — a clean, media-sharing app for discovering and saving highlights.
 
-Modern UI/UX with seamless navigation and media display.
+---
 
-Full backend with Convex, using Clerk for secure authentication.
+## 🚀 Overview
 
-Lightweight, responsive, image-first feature set.
+Adilight is a modern mobile app built using **Expo (React Native)** that allows users to:
 
-🧩 Tech Stack
-Frontend: Expo (React Native)
+- Browse image posts
+- Create and share new posts
+- Comment and interact in real-time
+- Save favorite content to bookmarks
 
-Authentication: Clerk
+It combines **a sleek user experience** with **reliable real-time backend architecture**, offering a fully responsive and scalable image-first platform.
 
-Backend & Data: Convex
+---
 
-Design: Tailwind-styled or custom CSS-in-JS 
+## 🧩 Tech Stack
+
+| Layer            | Technology             |
+|------------------|------------------------|
+| **Frontend**     | React Native (Expo)    |
+| **Backend**      | Convex (Realtime DB)   |
+| **Authentication** | Clerk (OAuth via Google) |
+| **Styling**      | Tailwind CSS-in-JS or custom styling |
+
+---
+
+## 📸 Screenshots & Feature Tour
+
+### 🟢 1. Splash / Login Screen
+
+![Login Screen](./screenshots/login.png)  
+> **"Continue with Google"** powered by Clerk for seamless OAuth login.
+
+---
+
+### 🔖 2. Bookmarks Tab
+
+![Bookmarks View](./screenshots/Bookmarks.png)  
+> Displays saved posts in a clean grid. Pull-to-refresh and navigation to user profiles supported.
+
+---
+
+### ➕ 3. New Post Screen
+
+![New Post Screen](./screenshots/CreatePost.png)  
+> Tap "+" → Select image → Add caption → Upload. Uses device media picker and saves post via Convex.
+
+---
+
+### 👥 4. User Profile (Other User)
+
+![Other Profile](./screenshots/FreindsProfile.png)  
+> View another user's posts, follower count, and choose to follow them.
+
+---
+
+### 💬 5. Comments Section
+
+![Comments Section](./screenshots/Comment.png)  
+> Real-time chat-like commenting system, auto-updating via Convex subscriptions.
+
+---
+
+### 👤 6. My Profile (Current User)
+
+![My Profile Edit](./screenshots/EditProfile.png)  
+> Displays your posts and stats. Edit name and bio inline with smooth transitions.
+
+---
+
+## ✅ Key Features
+
+| Feature              | Description |
+|----------------------|-------------|
+| **Authentication**   | Full onboarding and Google Sign-In via Clerk |
+| **Backend Logic**    | Real-time DB and serverless functions with Convex |
+| **Post Management**  | Create, view, delete, like, comment on posts |
+| **Bookmarks**        | Save and organize favorite content |
+| **User Profiles**    | View/edit profiles, follow/unfollow other users |
+| **Real-time Comments** | Live comment threads via subscriptions |
+| **Image Handling**   | Use native image picker and preview before posting |
+
+---
+
+## 🛠 Backend & Authentication Details
+
+### 🔐 Clerk (Authentication)
+- Handles user sign-in, sessions, and token management
+- Integrated Google OAuth login
+- Secure access and user context syncing
+
+### 🧠 Convex (Backend & Realtime DB)
+- Collections: `users`, `posts`, `comments`, `bookmarks`, `follows`
+- Queries: Feed, Bookmarked Feed, Profile Posts, Comments per Post
+- Mutations:
+  - `addPost()`
+  - `addComment()`
+  - `toggleBookmark()`
+  - `followUser()`
+- Subscriptions enable real-time UI syncing
+
+---
+
+## 📁 Codebase Highlights
+
+| Folder / File             | Purpose |
+|---------------------------|---------|
+| `screens/`                | Pages: `Home`, `Bookmarks`, `NewPost`, `Profile`, `Comments` |
+| `components/`             | Reusable UI: `PostCard`, `CommentInput`, `ProfileHeader` |
+| `convex/functions/`       | Business logic (mutations) |
+| `convex/queries/`         | Data fetching (queries & subscriptions) |
+| `contexts/AuthContext.tsx` | Clerk ↔ Convex identity management |
+
+---
 
 
 
-📸 Screenshots & Feature Tour
-1. Splash / Login Screen
+## 👋 Final Notes
 
-"Continue with Google" powered by Clerk for OAuth—clean, simple onboarding.
+Adilight is a lightweight yet fully-functional social media app that:
 
-2. Bookmarks Tab
+- Combines seamless UX with production-ready architecture
+- Leverages cutting-edge tools like **Convex** & **Clerk**
+- Demonstrates real-time interaction patterns in mobile development
 
-Displays saved posts in a grid. Pull-to-refresh and quick-profile navigation included.
 
-3. New Post Screen
 
-Tap + → select an image → add caption → upload. Integrates image picker and uploads to Convex.
-
-4. User Profile (other user)
-
-Shows post count, follower/following stats, grid of their posts, and a "Follow" button.
-
-5. Comments Section
-
-Real-time chat-like comment feed with input bar. Syncs instant UI updates via Convex subscriptions.
-
-6. My Profile (current user)
-
-Shows own avatar, post stats, editable profile (name/bio/photo) inline at bottom.
-
-✅ Key Features
-Feature	Description
-Auth	Full Auth/Onboarding via Clerk (Google sign-in)
-Backend	Everything powered by Convex: real-time storage, queries, and subscriptions
-Post Management	Create, view, delete own posts; like/comment on others
-Bookmarks	Save favorite posts in a personal collection
-Profiles	View user profiles with follow/unfollow
-Realtime Comments	Live updates without manual refresh
-Image Handling	Local image picker + upload support, preview before posting
-
-🧪 Backend & Authentication Details
-Clerk handles all user sign-in, sessions, and secure token management.
-
-Convex provides realtime database and serverless functions:
-
-Collections: users, posts, comments, bookmarks, follows
-
-Queries: feed, bookmarks feed, profile posts, comment threads
-
-Mutation functions: addPost, addComment, toggleBookmark, followUser
-
-Real-time updates via subscriptions
-
-📁 Code Highlights
-Screens/*: Organized screens: Home, Bookmarks, NewPost, Profile, Comments
-
-Components/… Reusable parts: PostCard, CommentInput, ProfileHeader
-
-convex/functions/ — server-side logic for business rules
-
-convex/queries/ — client queries and subscriptions
-
-AuthContext.tsx connects Clerk sessions with Convex user identity
