@@ -1,50 +1,81 @@
-# Welcome to your Expo app 👋
+🌟 Adilight
+Tagline: Don’t miss anything — a clean, media-sharing app for discovering and saving highlights.
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+🚀 Overview
+Adilight is an Expo-based mobile app that lets users browse, post, comment, and bookmark images. Key differentiators:
 
-## Get started
+Modern UI/UX with seamless navigation and media display.
 
-1. Install dependencies
+Full backend with Convex, using Clerk for secure authentication.
 
-   ```bash
-   npm install
-   ```
+Lightweight, responsive, image-first feature set.
 
-2. Start the app
+🧩 Tech Stack
+Frontend: Expo (React Native)
 
-   ```bash
-    npx expo start
-   ```
+Authentication: Clerk
 
-In the output, you'll find options to open the app in a
+Backend & Data: Convex
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Design: Tailwind-styled or custom CSS-in-JS 
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
-## Get a fresh project
 
-When you're ready, run:
+📸 Screenshots & Feature Tour
+1. Splash / Login Screen
 
-```bash
-npm run reset-project
-```
+"Continue with Google" powered by Clerk for OAuth—clean, simple onboarding.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+2. Bookmarks Tab
 
-## Learn more
+Displays saved posts in a grid. Pull-to-refresh and quick-profile navigation included.
 
-To learn more about developing your project with Expo, look at the following resources:
+3. New Post Screen
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Tap + → select an image → add caption → upload. Integrates image picker and uploads to Convex.
 
-## Join the community
+4. User Profile (other user)
 
-Join our community of developers creating universal apps.
+Shows post count, follower/following stats, grid of their posts, and a "Follow" button.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+5. Comments Section
+
+Real-time chat-like comment feed with input bar. Syncs instant UI updates via Convex subscriptions.
+
+6. My Profile (current user)
+
+Shows own avatar, post stats, editable profile (name/bio/photo) inline at bottom.
+
+✅ Key Features
+Feature	Description
+Auth	Full Auth/Onboarding via Clerk (Google sign-in)
+Backend	Everything powered by Convex: real-time storage, queries, and subscriptions
+Post Management	Create, view, delete own posts; like/comment on others
+Bookmarks	Save favorite posts in a personal collection
+Profiles	View user profiles with follow/unfollow
+Realtime Comments	Live updates without manual refresh
+Image Handling	Local image picker + upload support, preview before posting
+
+🧪 Backend & Authentication Details
+Clerk handles all user sign-in, sessions, and secure token management.
+
+Convex provides realtime database and serverless functions:
+
+Collections: users, posts, comments, bookmarks, follows
+
+Queries: feed, bookmarks feed, profile posts, comment threads
+
+Mutation functions: addPost, addComment, toggleBookmark, followUser
+
+Real-time updates via subscriptions
+
+📁 Code Highlights
+Screens/*: Organized screens: Home, Bookmarks, NewPost, Profile, Comments
+
+Components/… Reusable parts: PostCard, CommentInput, ProfileHeader
+
+convex/functions/ — server-side logic for business rules
+
+convex/queries/ — client queries and subscriptions
+
+AuthContext.tsx connects Clerk sessions with Convex user identity
